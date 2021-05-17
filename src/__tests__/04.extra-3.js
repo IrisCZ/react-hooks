@@ -2,8 +2,8 @@ import * as React from 'react'
 import {alfredTip} from '@kentcdodds/react-workshop-app/test-utils'
 import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import App from '../final/04.extra-3'
-// import App from '../exercise/04'
+// import App from '../final/04.extra-3'
+import App from '../exercise/04-history'
 
 test('can play a game of tic tac toe', () => {
   render(<App />)
@@ -50,9 +50,7 @@ test('can play a game of tic tac toe', () => {
 
   alfredTip(
     () =>
-      expect(
-        JSON.parse(window.localStorage.getItem('tic-tac-toe:history')),
-      ).toEqual(
+      expect(JSON.parse(window.localStorage.getItem('history'))).toEqual(
         // prettier-ignore
         [
           [null, null, null,
@@ -81,9 +79,7 @@ test('can play a game of tic tac toe', () => {
 
   alfredTip(
     () =>
-      expect(
-        JSON.parse(window.localStorage.getItem('tic-tac-toe:history')),
-      ).toEqual(
+      expect(JSON.parse(window.localStorage.getItem('history'))).toEqual(
         // prettier-ignore
         [
           [null, null, null,
@@ -91,6 +87,6 @@ test('can play a game of tic tac toe', () => {
           null, null, null]
         ],
       ),
-    'Make sure that the localStorage item is updated with the JSON.stringified squares array',
+    'Make sure that the localStorage item is reset with the JSON.stringified squares array',
   )
 })
